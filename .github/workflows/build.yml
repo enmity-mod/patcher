@@ -6,30 +6,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go
-        uses: actions/checkout@v2
-        uses: actions/setup-go@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
         with:
           go-version: '1.17'
           check-latest: true
         run: mkdir -p build/
 
       - name: Build for Windows amd64
-				env:
-					GOPROXY: "https://proxy.golang.org"
+        env:
+          GOPROXY: "https://proxy.golang.org"
           GOARCH: "amd64"
           GOOS: "windows"
         run: go build -o build/win_amd64.exe cmds/patcher/main.go
 
       - name: Build for Mac amd64
-				env:
-					GOPROXY: "https://proxy.golang.org"
+        env:
+          GOPROXY: "https://proxy.golang.org"
           GOARCH: "amd64"
           GOOS: "darwin"
         run: go build -o build/mac_amd64 cmds/patcher/main.go
 
       - name: Build for Mac arm64
-				env:
-					GOPROXY: "https://proxy.golang.org"
+        env:
+          GOPROXY: "https://proxy.golang.org"
           GOARCH: "arm64"
           GOOS: "darwin"
         run: go build -o build/mac_arm64 cmds/patcher/main.go
