@@ -11,7 +11,7 @@ jobs:
         with:
           go-version: '1.17'
           check-latest: true
-        run: mkdir -p build/
+      - run: mkdir -p build/
 
       - name: Build for Windows amd64
         env:
