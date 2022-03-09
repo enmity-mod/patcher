@@ -18,36 +18,27 @@ jobs:
           GOPROXY: "https://proxy.golang.org"
           GOARCH: "amd64"
           GOOS: "windows"
-        run: go build -o build/win_amd64.exe cmds/patcher/main.go
+        run: go build -o build/patcher.win-amd64.exe cmds/patcher/main.go
 
       - name: Build for Mac amd64
         env:
           GOPROXY: "https://proxy.golang.org"
           GOARCH: "amd64"
           GOOS: "darwin"
-        run: go build -o build/mac_amd64 cmds/patcher/main.go
+        run: go build -o build/patcher.mac-amd64 cmds/patcher/main.go
 
       - name: Build for Mac arm64
         env:
           GOPROXY: "https://proxy.golang.org"
           GOARCH: "arm64"
           GOOS: "darwin"
-        run: go build -o build/mac_arm64 cmds/patcher/main.go
+        run: go build -o build/patcher.mac-arm64 cmds/patcher/main.go
 
-      - name: Upload Windows amd64 build
-        uses: actions/upload-artifact@v3
+      - name: Create release
+        uses: softprops/action-gh-release@v1
         with:
-          name: windows-amd64
-          path: build/win_amd64.exe
-
-      - name: Upload Mac amd64 build
-        uses: actions/upload-artifact@v3
-        with:
-          name: macos-amd64
-          path: build/mac_amd64
-
-      - name: Upload Mac arm64 build
-        uses: actions/upload-artifact@v3
-        with:
-          name: macos-arm64
-          path: build/mac_arm64
+          files:  |
+            build/patcher.win-amd64.exe
+            build/patcher.mac-amd64
+            build/patcher.mac-arm64
+            LICENSE
