@@ -1,4 +1,4 @@
-name: Build and upload artifacts
+name: Create release
 on: [push, pull_request]
 jobs:
   build:
@@ -37,6 +37,7 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: Release ${{ github.ref }}
           files:  |
             build/patcher.win-amd64.exe
             build/patcher.mac-amd64
