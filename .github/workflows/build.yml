@@ -37,7 +37,7 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: release-${{ github.ref }}
+          tag_name: release-${{ github.sha }}
           files:  |
             build/patcher.win-amd64.exe
             build/patcher.mac-amd64
