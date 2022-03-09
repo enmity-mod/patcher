@@ -1,4 +1,4 @@
-name: Build and test Go
+name: Build and upload artifacts
 on: [push, pull_request]
 jobs:
   build:
@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - uses: actions/setup-go@v2
         with:
           go-version: '1.17'
