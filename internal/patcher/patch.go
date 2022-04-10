@@ -54,6 +54,12 @@ func PatchDiscord(discordPath *string, iconsPath *string, dylibPath *string) {
 	}
 	log.Println("icons patched")
 
+	log.Println("showing Discord's document folder in the Files app and Finder/iTunes")
+	if err := patchiTunesAndFiles(); err != nil {
+		log.Fatalln(err)
+	}
+	log.Println("patched")
+
 	packDiscord()
 	log.Println("cleaning up")
 	clearPayload()
@@ -174,6 +180,19 @@ func patchIcon() error {
 
 	info["CFBundleIcons~ipad"].(map[string]interface{})["CFBundlePrimaryIcon"].(map[string]interface{})["CFBundleIconName"] = "EnmityIcon"
 	info["CFBundleIcons~ipad"].(map[string]interface{})["CFBundlePrimaryIcon"].(map[string]interface{})["CFBundleIconFiles"] = []string{"EnmityIcon60x60", "EnmityIcon76x76"}
+
+	err = savePlist(&info)
+	return err
+}
+
+// Show Enmity's document folder in Files app and iTunes/Finder
+func patchiTunesAndFiles() error {
+	info, err := loadPlist()
+	if err != nil {
+		return err
+	}
+	info["UISupportsDocumentBrowser"] = true
+	info["UIFileSharingEnabled"] = true
 
 	err = savePlist(&info)
 	return err
