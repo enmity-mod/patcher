@@ -40,6 +40,20 @@ jobs:
           GOOS: "darwin"
         run: go build -o build/patcher.mac-arm64 cmds/patcher/main.go
 
+      - name: Build for Linux amd64
+        env:
+          GOPROXY: "https://proxy.golang.org"
+          GOARCH: "amd64"
+          GOOS: "linux"
+        run: go build -o build/patcher.linux-amd64 cmds/patcher/main.go
+        
+      - name: Build for Linux arm64
+        env:
+          GOPROXY: "https://proxy.golang.org"
+          GOARCH: "arm64"
+          GOOS: "linux"
+        run: go build -o build/patcher.linux-arm64 cmds/patcher/main.go
+
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
@@ -48,4 +62,6 @@ jobs:
             build/patcher.win-amd64.exe
             build/patcher.mac-amd64
             build/patcher.mac-arm64
+            build/patcher.linux-amd64
+            build/patcher.linux-arm64
             LICENSE
