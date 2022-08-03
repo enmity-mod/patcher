@@ -11,13 +11,11 @@ import (
 const (
 	DEFAULT_IPA_PATH    = "files/Discord.ipa"
 	DEFAULT_ICONS_PATH  = "files/icons.zip"
-	DEFAULT_ENMITY_PATH = "files/Enmity.dylib"
 )
 
 const (
-	IPA_URL    = "https://files.enmity.app/Discord.ipa"
+	IPA_URL    = "https://github.com/enmity-mod/tweak/blob/main/Discord.ipa?raw=true"
 	ICONS_URL  = "https://files.enmity.app/icons.zip"
-	ENMITY_URL = "https://files.enmity.app/Enmity.dylib"
 )
 
 func PatchDiscord(discordPath *string, iconsPath *string, dylibPath *string) {
@@ -25,7 +23,6 @@ func PatchDiscord(discordPath *string, iconsPath *string, dylibPath *string) {
 
 	checkFile(discordPath, DEFAULT_IPA_PATH, IPA_URL)
 	checkFile(iconsPath, DEFAULT_ICONS_PATH, ICONS_URL)
-	checkFile(dylibPath, DEFAULT_ENMITY_PATH, ENMITY_URL)
 
 	extractDiscord(discordPath)
 
