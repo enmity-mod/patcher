@@ -14,7 +14,7 @@ func getLastModified(url *string) (*time.Time, error) {
 		return nil, err
 	}
 
-	lastModified := res.Header.Get("Last-Modified")
+	lastModified := res.Header.Get("Date")
 	if lastModified == "" {
 		return nil, errors.New("couldn't get Last Modified header")
 	}
