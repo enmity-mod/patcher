@@ -6,6 +6,8 @@ on:
   pull_request:
     tags:
       - '*'
+  workflow_dispatch:
+
 jobs:
   build:
     name: Build
