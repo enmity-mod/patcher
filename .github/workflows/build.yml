@@ -2,7 +2,7 @@ name: Create release
 on:
   push:
     tags:
-       - '*'
+      - '*'
   pull_request:
     tags:
       - '*'
@@ -26,35 +26,35 @@ jobs:
           GOPROXY: "https://proxy.golang.org"
           GOARCH: "amd64"
           GOOS: "windows"
-        run: go build -o build/patcher.win-amd64.exe cmds/patcher/main.go
+        run: go build -o build/patcher.win-amd64.exe
 
       - name: Build for Mac amd64
         env:
           GOPROXY: "https://proxy.golang.org"
           GOARCH: "amd64"
           GOOS: "darwin"
-        run: go build -o build/patcher.mac-amd64 cmds/patcher/main.go
+        run: go build -o build/patcher.mac-amd64
 
       - name: Build for Mac arm64
         env:
           GOPROXY: "https://proxy.golang.org"
           GOARCH: "arm64"
           GOOS: "darwin"
-        run: go build -o build/patcher.mac-arm64 cmds/patcher/main.go
+        run: go build -o build/patcher.mac-arm64
 
       - name: Build for Linux amd64
         env:
           GOPROXY: "https://proxy.golang.org"
           GOARCH: "amd64"
           GOOS: "linux"
-        run: go build -o build/patcher.linux-amd64 cmds/patcher/main.go
-        
+        run: go build -o build/patcher.linux-amd64
+
       - name: Build for Linux arm64
         env:
           GOPROXY: "https://proxy.golang.org"
           GOARCH: "arm64"
           GOOS: "linux"
-        run: go build -o build/patcher.linux-arm64 cmds/patcher/main.go
+        run: go build -o build/patcher.linux-arm64
 
       - name: Create release
         uses: softprops/action-gh-release@v1
