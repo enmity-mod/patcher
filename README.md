@@ -1,5 +1,5 @@
 <div align='center'>
-   <img src='https://github.com/enmity-mod/assets/blob/main/Enmity_Banner.png?raw=true' />
+   <img src='https://enmity-mod.github.io/repo/banner.png' />
 </div>
 
 ---

@@ -49,7 +49,7 @@ func setIcons() {
 	logger.Debug("Downloading app icons...")
 
 	icons := filepath.Join(assets, "icons.zip")
-	download("https://files.enmity.app/icons.zip", icons)
+	download("https://enmity-mod.github.io/assets/icons.zip", icons)
 
 	logger.Info("Downloaded app icons.")
 
